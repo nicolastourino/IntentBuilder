@@ -1,5 +1,5 @@
 {
-  "name": "SAIL Flow Builder",
+  "name": "SAIL Intent Builder",
   "short_name": "SAIL",
   "description": "Voice & Chat Bot Flow Mediator",
   "start_url": "./index.html",
