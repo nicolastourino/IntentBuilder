@@ -17,6 +17,19 @@ const App = () => {
   const [splashOut,     setSplashOut]     = useState(false)
   const isMobile                          = useIsMobile()
 
+  // Sync CSS variables with active theme so all var(--sail-*) inputs update
+  useEffect(() => {
+    const r = document.documentElement.style
+    r.setProperty('--sail-bgInput',  C.bgInput)
+    r.setProperty('--sail-bgSec',    C.bgSec)
+    r.setProperty('--sail-bgCard',   C.bgCard)
+    r.setProperty('--sail-textPri',  C.textPri)
+    r.setProperty('--sail-textSec',  C.textSec)
+    r.setProperty('--sail-textMut',  C.textMut)
+    r.setProperty('--sail-border',   C.border)
+    r.setProperty('--sail-primary',  C.primary)
+  }, [dark])
+
   useEffect(() => {
     const t  = setTimeout(() => setSplashOut(true), 900)
     const t2 = setTimeout(() => setSplash(false),   1320)
