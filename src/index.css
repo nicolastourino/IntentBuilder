@@ -1,0 +1,96 @@
+:root {
+  --sail-bgInput: #050B18;
+  --sail-bgSec: #0B1628;
+  --sail-bgCard: #0E1B32;
+  --sail-textPri: #EEF2FF;
+  --sail-textSec: #7A9CC8;
+  --sail-textMut: #4E6A8E;
+  --sail-border: rgba(59, 154, 240, 0.2);
+  --sail-primary: #3B9AF0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #ffffff;
+  color: #EEF2FF;
+}
+
+@keyframes sailSplashOut {
+  0%   { opacity: 1; transform: scale(1); }
+  80%  { opacity: 0; transform: scale(1.04); }
+  100% { opacity: 0; transform: scale(1.04); }
+}
+
+input, textarea, select { font-family: inherit; }
+input::placeholder, textarea::placeholder { color: var(--sail-textMut); opacity: 1; }
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-thumb { background: var(--sail-border); border-radius: 2px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fu { animation: fadeUp .18s ease; }
+
+@keyframes slideFromLeft {
+  from { transform: translateX(-100%); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes dashFlow { to { stroke-dashoffset: -16; } }
+
+@keyframes pulseRing {
+  0%   { opacity: .6; transform: scale(1); }
+  70%  { opacity: 0; transform: scale(1.5); }
+  100% { opacity: 0; }
+}
+
+@keyframes dzMenuIn {
+  from { opacity: 0; transform: translateY(-6px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes sailWave1 {
+  0%   { transform: translateX(0px)    scaleY(1);    }
+  28%  { transform: translateX(-112px) scaleY(.86);  }
+  50%  { transform: translateX(-200px) scaleY(1);    }
+  72%  { transform: translateX(-288px) scaleY(1.12); }
+  100% { transform: translateX(-400px) scaleY(1);    }
+}
+
+@keyframes sailWave2 {
+  0%   { transform: translateX(-55px)  scaleY(1.08); }
+  30%  { transform: translateX(-175px) scaleY(1);    }
+  55%  { transform: translateX(-275px) scaleY(.88);  }
+  80%  { transform: translateX(-375px) scaleY(1);    }
+  100% { transform: translateX(-455px) scaleY(1.08); }
+}
+
+@keyframes sailOverlayIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sailOverlayOut { from { opacity: 1; } to { opacity: 0; } }
+
+@keyframes slideUpSheet {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes fadeInBd { from { opacity: 0; } to { opacity: 1; } }
+
+/* PWA native feel */
+html, body {
+  height: 100%;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+* {
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+input, textarea, select, code {
+  user-select: text;
+  -webkit-user-select: text;
+}
+button, a { touch-action: manipulation; }
