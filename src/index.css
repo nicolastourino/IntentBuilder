@@ -1,12 +1,12 @@
 :root {
-  --sail-bgInput: #050B18;
-  --sail-bgSec: #0B1628;
-  --sail-bgCard: #0E1B32;
-  --sail-textPri: #EEF2FF;
-  --sail-textSec: #7A9CC8;
-  --sail-textMut: #4E6A8E;
-  --sail-border: rgba(59, 154, 240, 0.2);
-  --sail-primary: #3B9AF0;
+  --sail-bgInput: #EFF5FF;
+  --sail-bgSec: #EFF5FF;
+  --sail-bgCard: #FFFFFF;
+  --sail-textPri: #071E46;
+  --sail-textSec: #3A5A8C;
+  --sail-textMut: #7A9CBB;
+  --sail-border: #DDE8F5;
+  --sail-primary: #1E88FF;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
