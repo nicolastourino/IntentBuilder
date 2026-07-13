@@ -25,6 +25,27 @@ const ModulesFlow = ({ modules, arrayPath, allSteps, onModuleOp, depth = 0, setH
     if (dOver !== i) setDOver(i)
   }
 
+  const moveMod = (i, dir) => {
+    const j = i + dir
+    if (j < 0 || j >= (modules || []).length) return
+    const arr = [...(modules || [])]
+    ;[arr[i], arr[j]] = [arr[j], arr[i]]
+    onModuleOp('reorder', arrayPath, arr)
+  }
+
+  const ArrowBtn = ({ dir, disabled, onClick }) => (
+    <button disabled={disabled} onClick={e => { e.stopPropagation(); onClick() }}
+      title={dir < 0 ? 'Mover arriba' : 'Mover abajo'}
+      style={{ width: 18, height: 16, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        background: C.bgCard, border: `1px solid ${C.border}`, borderRadius: 4, padding: 0,
+        fontSize: 8, lineHeight: 1, color: disabled ? C.textMut + '44' : C.textSec,
+        cursor: disabled ? 'default' : 'pointer', transition: 'all .1s' }}
+      onMouseEnter={e => { if (!disabled) { e.currentTarget.style.borderColor = C.primary; e.currentTarget.style.color = C.primary } }}
+      onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.color = disabled ? C.textMut + '44' : C.textSec }}>
+      {dir < 0 ? '▲' : '▼'}
+    </button>
+  )
+
   const modDrop = (e, i) => {
     const mt = e.dataTransfer.getData('moduleType')
     if (mt) {
@@ -81,7 +102,15 @@ const ModulesFlow = ({ modules, arrayPath, allSteps, onModuleOp, depth = 0, setH
                   style={{ opacity: dMod === i ? .35 : 1, transition: 'opacity .15s', cursor: 'grab' }}>
                   {el}
                 </div>
-              : el
+              : <div style={{ display: 'flex', alignItems: 'flex-start', gap: 4 }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>{el}</div>
+                  {modules.length > 1 && (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 2, flexShrink: 0, marginTop: 10 }}>
+                      <ArrowBtn dir={-1} disabled={i === 0}   onClick={() => moveMod(i, -1)}/>
+                      <ArrowBtn dir={1}  disabled={isLast}    onClick={() => moveMod(i, 1)}/>
+                    </div>
+                  )}
+                </div>
             }
             {!isLast && (
               <div style={{ display: 'flex', justifyContent: 'center', flexShrink: 0 }}>
